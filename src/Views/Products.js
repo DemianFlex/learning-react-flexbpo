@@ -1,43 +1,12 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Loader from "../Components/Loader"
+import { useAxiosGet } from "../Hooks/HttpRequest"
 
 const Products = () => {
     const { id } = useParams()
     const url = `https://65bd2a91b51f9b29e9330624.mockapi.io/flexbpo/products/${id}`
-    const [product, setProduct] = useState({
-        loading: false,
-        data: null,
-        error: false,
-    })
-
-    useEffect(() => {
-        setProduct({
-            loading: true,
-            data: null,
-            error: false,
-        })
-        getProduct()
-    }, [])
-
-    const getProduct = () => {
-        axios.get(url)
-            .then(res => {
-                setProduct({
-                    loading: false,
-                    data: res.data,
-                    error: false
-                })
-            })
-            .catch(() => {
-                setProduct({
-                    loading: false,
-                    data: null,
-                    error: true
-                })
-            })
-    }
+    
+    let product = useAxiosGet(url)
 
     let content = null
 

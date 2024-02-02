@@ -524,6 +524,9 @@ video {
 .h-full {
   height: 100%;
 }
+.min-h-screen {
+  min-height: 100vh;
+}
 .w-4\/5 {
   width: 80%;
 }

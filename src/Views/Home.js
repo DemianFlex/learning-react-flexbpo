@@ -1,44 +1,12 @@
-import { useEffect, useState } from "react"
 import HelloWorld from "../Components/HelloWorld"
-import axios from "axios"
 import Loader from "../Components/Loader"
 import ProductCard from "../Components/ProductCard"
+import { useAxiosGet } from "../Hooks/HttpRequest"
 
 const Home = () => {
     const url = `https://65bd2a91b51f9b29e9330624.mockapi.io/flexbpo/products?page=1&limit=10`
-    const [products, setProducts] = useState({
-        loading: false,
-        data: null,
-        error: false,
-    })
-
-    useEffect(() => {
-        setProducts({
-            loading: true,
-            data: null,
-            error: false,
-        })
-        getProducts()
-    }, [])
-
-    const getProducts = () => {
-        axios.get(url)
-            .then(res => {
-                console.log(res.data)
-                setProducts({
-                    loading: false,
-                    data: res.data,
-                    error: false
-                })
-            })
-            .catch(() => {
-                setProducts({
-                    loading: false,
-                    data: null,
-                    error: true
-                })
-            })
-    }
+    
+    let products = useAxiosGet(url)
 
     let content = null
 
