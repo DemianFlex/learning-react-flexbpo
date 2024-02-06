@@ -5,7 +5,7 @@ import { useAxiosGet } from "../Hooks/HttpRequest"
 const Products = () => {
     const { id } = useParams()
     const url = `https://65bd2a91b51f9b29e9330624.mockapi.io/flexbpo/products/${id}`
-    
+
     let product = useAxiosGet(url)
 
     let content = null
@@ -37,7 +37,7 @@ const Products = () => {
                     {product.data.description}
                 </div>
             </div>
-    } 
+    }
 
     return (
         <div>
