@@ -10,10 +10,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "autoprefixer": "^10.4.17",
     "axios": "^1.6.7",
-    "postcss": "^8.4.33",
-    "postcss-cli": "^11.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
@@ -23,12 +20,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "buildcss": "postcss src/index.css -o src/tailwind.css",
-    "watchcss": "postcss src/index.css -o src/tailwind.css -w",
-    "start": "npm run buildcss && react-scripts start",
-    "build": "npm run buildcss && react-scripts build",
+    "start": "npm run watch:css && react-scripts start",
+    "build": "npm run watch:css && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch:css": "postcss src/tailwind.css -o src/index.css"
   },
   "eslintConfig": {
     "extends": [
@@ -47,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.8",
+    "postcss-cli": "^11.0.0"
   }
 }

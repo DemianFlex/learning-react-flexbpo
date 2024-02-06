@@ -1,6 +1,6 @@
 const HelloWorld = (props) => {
     return (
-        <h1>Hello {props.name}!</h1>
+        <h1 className="text-3xl">Hello {props.name}!</h1>
     )
 }
 
